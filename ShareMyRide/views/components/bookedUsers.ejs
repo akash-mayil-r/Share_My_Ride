@@ -1,0 +1,49 @@
+<div class="users_container">
+  <p class="text-uppercase text-muted text-center mt-2">co-travellers</p>
+  <div class="ride_status d-flex flex-wrap justify-content-around align-items-center">
+    <p class="text-capitalize text-center text-primary mx-2">Total seats:<%= seats %></p>
+    <p class="text-capitalize text-center text-success mx-2">booked seats:<%= booked %></p>
+    <p class="text-capitalize text-center text-danger mx-2">unbooked seats:<%= unbooked %></p>
+  </div>
+
+  <% if(!(typeof users==="undefined")) {%>
+  <% if(users.length>0) { %>
+  <% users.forEach((user,i)=>{ %>
+  <div class="user">
+
+    <div class="user_face">
+      <img src="/user/profile/<%= user.profile %>">
+    </div>
+
+    <div class="user_detail">
+      <div class="user_text font-weight-bold">
+        <p class="text-capitalize m-0"><%=user.name%></p>
+      </div>
+      <% if(typeof search_page==="undefined") { %>
+      <div class="user_text text-muted ">
+        <p class="m-0"><i class="fas fa-envelope-open-text" style="color:var(--secondary-color);"></i><%=user.email%></p>
+      </div>
+      <div class="user_text text-muted  ">
+        <p class="m-0"><i class="fab fa-whatsapp" style="color: #0bc30b;"></i><a href="https://web.whatsapp.com/send?phone='<%= user.whatsappno %>.'"><%=user.whatsappno%></a></p>
+      </div>
+      <% }%>
+      <% if(user._doc.passenger) { %>
+      <div class="user_text text-muted">
+        <p class="text-capitalize m-0"><i class="fas fa-users"></i><%=user._doc.passenger%></p>
+      </div>
+      <div class="user_text text-muted  ">
+        <p class=" m-0 ">Member since: <%= new Date(user.created_at).toDateString() %></p>
+        <p class="m-0"></p>
+      </div>
+      <% } %>
+    </div>
+
+  </div>
+  <%});%>
+  <%}else { %>
+  <p class="text-muted text-capitalize text-center m-5">No User's Booked so far </p>
+  <% } %>
+</div>
+<%}else { %>
+<p class="text-muted text-capitalize text-center m-5">No User's Booked so far </p>
+<% }%>

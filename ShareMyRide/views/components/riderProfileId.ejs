@@ -1,0 +1,63 @@
+<section>
+  <div class="rider_profile">
+    <!-- rider profile top -->
+    <div class="rider_profile-top">
+      <div class="rider_profile-img">
+        <img src="/rider/profile/<%= rider_profile.profile%>" class="rider_img" alt="profile">
+      </div>
+      <div class="rider_profile-name">
+        <p><%= rider_profile.name %></p>
+      </div>
+    </div>
+
+    <!-- rider profile bottom -->
+    <div class="rider_profile-bottom">
+      <div class="rider_profile-text">
+        <span class="text-muted my-2">"<%= rider_profile.bio %>"</span>
+      </div>
+
+      <div class="rider_profile-text">
+
+        <p class="text-capitalize "><i class="fab fa-whatsapp" style="color: #0bc30b;"></i>WhatsApp no:</p>
+        <p class=" text-capitalize"><a href="https://api.whatsapp.com/send?phone=<%= rider_profile.whatsappno %>"><%= rider_profile.whatsappno %></a></p>
+
+
+      </div>
+      <div class="rider_profile-text">
+        <p class="text-capitalize "><i class="fas fa-mobile-alt" style="color:var(--secondary-color);"></i>Phone no:</p>
+        <p class=" text-capitalize"><%= rider_profile.phoneno %></p>
+
+
+      </div>
+      <div class="rider_profile-text">
+        <p class="text-capitalize "><i class="fas fa-car" style="color:var(--secondary-color);"></i>Expereince:</p>
+        <p class=" text-capitalize"><%= rider_profile.drivingexpereince %></p>
+
+
+      </div>
+      <div class="rider_profile-text">
+        <p class="text-capitalize "><i class="fas fa-envelope-open-text" style="color:var(--secondary-color);"></i>Email:</p>
+        <p class=" text-capitalize"> Verified</p>
+      </div>
+      <div class="rider_profile-text">
+        <p class="text-capitalize ">Ride's posted:</p>
+        <p class=" text-capitalize"><%= rider_profile.no_of_ride %></p>
+      </div>
+      <div class="rider_profile-text">
+        <p class="text-capitalize ">Member since:</p>
+        <p class=" text-capitalize"><%= new Date(rider_profile.created_at).toDateString() %></p>
+      </div>
+      <div class="rider_profile-review">
+        <p class="text-capitalize"><i class="fas fa-star"></i><%= rider_profile.rating.toFixed(2)%>/5- <%= rider_profile.total_rating %> rating</p>
+
+        <a href="/rider/show/reviews/id/<%= rider_profile._id %>">
+          <div class="search_result-arrow"></div>
+        </a>
+
+      </div>
+
+
+    </div>
+
+  </div>
+</section>
